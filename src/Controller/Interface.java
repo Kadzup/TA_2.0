@@ -1,6 +1,7 @@
 package Controller;
 import java.time.LocalDate;
 import Models.*;
+import IO.*;
 
 public class Interface{
     public static void main(String args[]) {
@@ -71,10 +72,9 @@ public class Interface{
                 .setTour(tour)
                 .build();
 
-        System.out.println(order.orderTour());
-
-        System.out.println("\n" + location.getFullAddress());
-
-        System.out.println("\n" + client.getClientContact() + "\n\n" + client.getFullName());
+        JsonParser jPars = new JsonParser();
+        String path = "c://";
+        jPars.writeJson(service, path);
+        jPars.readJson(service, path);
     }
 }

@@ -1,32 +1,33 @@
 package Tests;
 
 import Models.*;
+import org.junit.jupiter.api.*;
 
 class TestsTour {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isNullLinks(){
         Tour tour = new Tour.Builder().build();
 
-        Assert.assertEquals(tour.getLocation(), null);
-        Assert.assertEquals(tour.getService(), null);
-        Assert.assertEquals(tour.getOwner(), null);
+        Assertions.assertEquals(tour.getLocation(), null);
+        Assertions.assertEquals(tour.getService(), null);
+        Assertions.assertEquals(tour.getOwner(), null);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void calcPrice() {
         Tour tour1 = new Tour.Builder().setPrice(100).setTaxes(17).setService(new Service.Builder().setPrice(100).build()).build();
         Tour tour2 = new Tour.Builder().setPrice(-100).setTaxes(-17).setService(new Service.Builder().setPrice(-100).build()).build();
 
         Tour tour3 = new Tour.Builder().build();
 
-        Assert.assertEquals(tour1.calcPrice(),217,0);
-        Assert.assertEquals(tour2.calcPrice(),-1,0);
+        Assertions.assertEquals(tour1.calcPrice(),217,0);
+        Assertions.assertEquals(tour2.calcPrice(),-1,0);
 
-        Assert.assertEquals(tour3.calcPrice(),-1,0);
+        Assertions.assertEquals(tour3.calcPrice(),-1,0);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getContact() {
         Tour tour1 = new Tour.Builder()
                 .setOwner(new Worker.Builder()
@@ -45,15 +46,15 @@ class TestsTour {
                         .build())
                 .build();
 
-        Assert.assertEquals(tour1.getContact().contains("Alex Lasek"), true);
-        Assert.assertEquals(tour1.getContact().contains("USA, WSDC, Some Street, Lost spa"), true);
+        Assertions.assertEquals(tour1.getContact().contains("Alex Lasek"), true);
+        Assertions.assertEquals(tour1.getContact().contains("USA, WSDC, Some Street, Lost spa"), true);
 
         Tour tour2 = new Tour.Builder().build();
-        Assert.assertEquals(tour2.getContact().contains("Alex Lasek"), false);
-        Assert.assertEquals(tour2.getContact().contains("Not enough info"), true);
+        Assertions.assertEquals(tour2.getContact().contains("Alex Lasek"), false);
+        Assertions.assertEquals(tour2.getContact().contains("Not enough info"), true);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getInfo() {
         Client client = new Client.Builder()
                 .setFName("Martin")
@@ -87,14 +88,14 @@ class TestsTour {
 
         String exp = tour.getInfo(client);
 
-        Assert.assertEquals(true, tour.getInfo(client).contains("Martin Garix"));
-        Assert.assertEquals(true, tour.getInfo(client).contains("some food"));
-        Assert.assertEquals(true, tour.getInfo(client).contains("Visa services: Yes"));
-        Assert.assertEquals(true, tour.getInfo(client).contains("Total: 1183.0$"));
+        Assertions.assertEquals(true, tour.getInfo(client).contains("Martin Garix"));
+        Assertions.assertEquals(true, tour.getInfo(client).contains("some food"));
+        Assertions.assertEquals(true, tour.getInfo(client).contains("Visa services: Yes"));
+        Assertions.assertEquals(true, tour.getInfo(client).contains("Total: 1183.0$"));
 
         Tour tour1 = new Tour.Builder().build();
         String exp1 = tour1.getInfo(client);
-        Assert.assertEquals(false, tour1.getInfo(client).contains("Martin Garix"));
-        Assert.assertEquals(true, tour1.getInfo(client).contains("Not enough info"));
+        Assertions.assertEquals(false, tour1.getInfo(client).contains("Martin Garix"));
+        Assertions.assertEquals(true, tour1.getInfo(client).contains("Not enough info"));
     }
 }

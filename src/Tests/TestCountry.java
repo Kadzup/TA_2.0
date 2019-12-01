@@ -1,7 +1,7 @@
 package Tests;
 
 import Models.*;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class TestCountry {
 
@@ -14,12 +14,12 @@ class TestCountry {
                 .setArea(603628)
                 .build();
 
-        Assert.assertEquals(true, country.getInfo().contains("Name: Ukraine"));
-        Assert.assertEquals(true, country.getInfo().contains("Capital: Kiev"));
+        Assertions.assertEquals(true, country.getInfo().contains("Name: Ukraine"));
+        Assertions.assertEquals(true, country.getInfo().contains("Capital: Kiev"));
 
         Country c2 = new Country.Builder().build();
-        Assert.assertEquals(true, c2.getInfo().contains("Capital: null"));
-        Assert.assertEquals(true, c2.getInfo().contains("0.0"));
+        Assertions.assertEquals(true, c2.getInfo().contains("Capital: null"));
+        Assertions.assertEquals(true, c2.getInfo().contains("0.0"));
     }
 
     @Test
@@ -29,9 +29,9 @@ class TestCountry {
                 .setCapital("Kiev")
                 .build();
 
-        Assert.assertEquals(true, country.getCountry().contains("Ukraine, Kiev"));
+        Assertions.assertEquals(true, country.getCountry().contains("Ukraine, Kiev"));
 
         Country c2 = new Country.Builder().build();
-        Assert.assertEquals(true, c2.getCountry().contains("null, null"));
+        Assertions.assertEquals(true, c2.getCountry().contains("null, null"));
     }
 }

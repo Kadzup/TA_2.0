@@ -1,12 +1,9 @@
 package Tests;
 
 import Models.*;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TestsWorker {
 
@@ -14,7 +11,7 @@ class TestsWorker {
     void getYear() {
         Worker w1 = new Worker.Builder().setBDay(LocalDate.now()).build();
 
-        Assert.assertEquals(2019, w1.getYear());
+        Assertions.assertEquals(2019, w1.getYear());
     }
 
     @Test
@@ -28,15 +25,16 @@ class TestsWorker {
                 .build();
 
         String ex = w1.getInfo();
-        Assert.assertEquals(true, w1.getInfo().contains("First Name: Alex"));
-        Assert.assertEquals(true, w1.getInfo().contains(LocalDate.now().toString()));
+
+        Assertions.assertEquals(true, w1.getInfo().contains("First Name: Alex"));
+        Assertions.assertEquals(true, w1.getInfo().contains(LocalDate.now().toString()));
     }
 
     @Test
     void getFullName() {
         Worker w1 = new Worker.Builder().setFName("Alex").setLName("Lusek").build();
 
-        Assert.assertEquals(true, w1.getFullName().contains("Alex Lusek"));
-        Assert.assertEquals(true, new Worker.Builder().build().getFullName().contains(""));
+        Assertions.assertEquals(true, w1.getFullName().contains("Alex Lusek"));
+        Assertions.assertEquals(true, new Worker.Builder().build().getFullName().contains(""));
     }
 }

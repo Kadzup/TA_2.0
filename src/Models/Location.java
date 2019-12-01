@@ -1,7 +1,9 @@
 package Models;
 
 import java.lang.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Location {
     private Country country;
     private String name;
@@ -51,14 +53,17 @@ public class Location {
         return available;
     }
 
-
-
+    @JsonIgnoreProperties
     public String getLocation(){
         return (getCountry().getCountry() + ", " + getName());
     }
+
+    @JsonIgnoreProperties
     public String getFullAddress(){
         return(getCountry().getCountry() + ", " + getAddress() + ", " + getName());
     }
+
+    @JsonIgnoreProperties
     public String getInfo(){
         return (
                 "Name: " + getName() +

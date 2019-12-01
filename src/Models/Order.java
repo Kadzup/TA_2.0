@@ -2,7 +2,9 @@ package Models;
 
 import java.lang.*;
 import java.time.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
     private LocalDate departure;
     private LocalDate arrival;
@@ -42,15 +44,16 @@ public class Order {
         return tour;
     }
 
-
     /**
      *  GETTERS / SETTERS end
      */
 
+    @JsonIgnoreProperties
     public boolean checkTour(){
         return getTour().getLocation().isAvailable();
     }
 
+    @JsonIgnoreProperties
     public String orderTour(){
         if(!checkTour())
             return "Not available";

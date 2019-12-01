@@ -1,6 +1,9 @@
 package Models;
-import java.lang.*;
 
+import java.lang.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Country {
     private String name;
     private long population;
@@ -39,7 +42,7 @@ public class Country {
     }
 
 
-
+    @JsonIgnoreProperties
     public String getInfo(){
         return (
                 "Name: " + getName() +
@@ -48,6 +51,7 @@ public class Country {
                 "\nPopulation: " + getPopulation()
                 );
     }
+    @JsonIgnoreProperties
     public String getCountry(){
         return (getName()+", "+getCapital());
     }

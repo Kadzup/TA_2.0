@@ -1,7 +1,9 @@
 package Models;
 
 import java.lang.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Service {
     private String name;
     private double price;
@@ -38,7 +40,6 @@ public class Service {
     public boolean isRiskCover(){
         return riskCover;
     }
-
 
     public static final class Builder {
         private String name;

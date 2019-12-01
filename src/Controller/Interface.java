@@ -7,7 +7,7 @@ public class Interface{
     public static void main(String args[]) {
 
         Client client = new Client.Builder()
-                .setBDay(LocalDate.now())
+                .setBDay(LocalDate.of(2019,10, 10))
                 .setEmail("dstefurak@email.net")
                 .setFName("Dmytro")
                 .setLName("Stefurak")
@@ -17,7 +17,7 @@ public class Interface{
 
         Worker worker = new Worker.Builder()
                 .setAddress("some street")
-                .setBDay(LocalDate.now())
+                .setBDay(LocalDate.of(2019,10, 10))
                 .setFName("Alex")
                 .setLName("Lusek")
                 .setPhone("+000 000 0000 00")
@@ -65,16 +65,16 @@ public class Interface{
                 .build();
 
         Order order = new Order.Builder()
-                .setArrival(LocalDate.now())
+                .setArrival(LocalDate.of(2019,10, 10))
                 .setClient(client)
-                .setDeparture(LocalDate.now())
+                .setDeparture(LocalDate.of(2019,10, 10))
                 .setPrice(1000)
                 .setTour(tour)
                 .build();
 
         JsonParser jPars = new JsonParser();
         String path = "c://";
-        jPars.writeJson(service, path);
-        jPars.readJson(service, path);
+        jPars.writeJson(worker, path);
+        jPars.readJson(worker, path);
     }
 }

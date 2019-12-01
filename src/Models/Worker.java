@@ -2,7 +2,9 @@ package Models;
 
 import java.lang.*;
 import java.time.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Worker {
     /**
      * First name of Worker
@@ -86,16 +88,18 @@ public class Worker {
         return phone;
     }
 
-
+    @JsonIgnoreProperties
     public int getYear(){
         return this.bDay.getYear();
     }
 
+    @JsonIgnoreProperties
     public void changeName(String firstName, String lastName){
         fName = firstName;
         lName = lastName;
     }
 
+    @JsonIgnoreProperties
     public float calculateSalary(float taxes){
         if(salary-taxes > 0){
             return salary-taxes;
@@ -104,6 +108,8 @@ public class Worker {
             return -1;
         }
     }
+
+    @JsonIgnoreProperties
     public String getInfo(){
         return(
                 "First Name: " + getFirstName() +
@@ -114,12 +120,15 @@ public class Worker {
         );
     }
 
+    @JsonIgnoreProperties
     public String howToFind(){
         return (
                 "Location: " + getAddress()+
                 "\nContact Phone: " + getPhone()
         );
     }
+
+    @JsonIgnoreProperties
     public String getFullName(){
         return (getFirstName() + " " + getLastName());
     }

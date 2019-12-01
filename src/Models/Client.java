@@ -2,7 +2,9 @@ package Models;
 
 import java.lang.*;
 import java.time.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Client {
     private String fName;
     private String lName;
@@ -13,7 +15,6 @@ public class Client {
 
     private String phone;
     private String email;
-
 
     Client(){
         fName = "Null";
@@ -35,7 +36,6 @@ public class Client {
         this.phone = phone;
         this.email = email;
     }
-
 
     /**
      *  GETTERS / SETTERS   begin
@@ -64,17 +64,15 @@ public class Client {
         return paymentInfo;
     }
 
-
-
     /**
      *  GETTERS / SETTERS end
      */
 
-
-
+    @JsonIgnoreProperties
     public String getFullName(){
         return (getfName()+" "+getlName());
     }
+    @JsonIgnoreProperties
     public String getClientContact(){
         return("Client: "+getFullName()+"\nContact: " + getPhone() + ", " + getEmail());
     }

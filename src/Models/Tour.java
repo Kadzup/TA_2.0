@@ -1,5 +1,7 @@
 package Models;
+
 import java.lang.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * <h1>Welcome to TA!</h1>
@@ -13,6 +15,7 @@ import java.lang.*;
  * @author <a href="https://github.com/Kadzup"><b><u>Kadzup</u></b></a>
  * @since <b>15.09.2019</b>
  * */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Tour {
     /**
      * Information about Company name
@@ -189,9 +192,7 @@ public class Tour {
         return this.owner;
     }
 
-
-
-
+    @JsonIgnoreProperties
     public float calcPrice(){
         if(getService() != null)
             if(getPrice()+getService().getPrice()+getTaxes() >= 0) {
@@ -200,6 +201,7 @@ public class Tour {
         return -1;
     }
 
+    @JsonIgnoreProperties
     public String getContact(){
         if((getOwner() != null) && (getLocation()!= null))
             return (
@@ -210,6 +212,7 @@ public class Tour {
         return "Not enough info";
     }
 
+    @JsonIgnoreProperties
     public String getInfo(Client client){
         if(client != null ) {
             if (getService() != null || getLocation() != null) {

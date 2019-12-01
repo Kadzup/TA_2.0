@@ -76,5 +76,12 @@ public class Interface{
         String path = "c://";
         jPars.writeJson(worker, path);
         jPars.readJson(worker, path);
+        
+        jPars.writeJson(client, path);
+        jPars.writeJson(service, path);
+        jPars.writeJson(tour, path);
+        jPars.writeJson(order, path);
+        jPars.writeJson(location, path);
+        jPars.writeJson(country, path);
     }
 }

@@ -1,10 +1,11 @@
 package Controller;
+import java.io.IOException;
 import java.time.LocalDate;
 import Models.*;
 import IO.*;
 
 public class Interface{
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
 
         Client client = new Client.Builder()
                 .setBDay(LocalDate.of(2019,10, 10))
@@ -72,16 +73,12 @@ public class Interface{
                 .setTour(tour)
                 .build();
 
-        JsonParser jPars = new JsonParser();
+        serializDeserialiIO jPars = new serializDeserialiIO();
         String path = "c://";
-        jPars.writeJson(worker, path);
-        jPars.readJson(worker, path);
-        
-        jPars.writeJson(client, path);
-        jPars.writeJson(service, path);
-        jPars.writeJson(tour, path);
-        jPars.writeJson(order, path);
-        jPars.writeJson(location, path);
-        jPars.writeJson(country, path);
+        jPars.SserializeJson(worker, path);
+        worker = jPars.DeserializeJson(worker, "c://worker_object-3226343206514262163.json");
+
+        jPars.SerializeXml(client, path);
+        client = jPars.DeserializeJson(client, "client_object-7055649794870561524");
     }
 }
